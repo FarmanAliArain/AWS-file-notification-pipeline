@@ -32,4 +32,6 @@ The Lambda execution role follows least privilege — every permission is scoped
 
 ## What I Learned
 
-[Fill this in with your own specific experience — e.g. IAM propagation delays, structured JSON logging in Lambda, debugging CloudWatch log groups]
+## What I Learned
+
+Building this reinforced why event-driven architecture matters — SQS decouples the upload from the processing, so messages can remain queued if Lambda is temporarily unavailable. Writing least-privilege IAM policies (with no wildcards) took more upfront thought than I expected, but it made clear exactly what each component of the pipeline needs access to. Having Lambda fetch fresh metadata from S3 at processing time, rather than trusting the queue message alone, also felt like a small but important design choice for maintaining accurate file information.
