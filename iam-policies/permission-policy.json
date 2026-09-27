@@ -1,0 +1,9 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {"Sid": "S3Read", "Effect": "Allow", "Action": "s3:GetObject", "Resource": "arn:aws:s3:::BUCKET_NAME/*"},
+    {"Sid": "SQSAccess", "Effect": "Allow", "Action": ["sqs:ReceiveMessage","sqs:DeleteMessage","sqs:GetQueueAttributes"], "Resource": "arn:aws:sqs:REGION:ACCOUNT_ID:QUEUE_ARN"},
+    {"Sid": "SNSPublish", "Effect": "Allow", "Action": "sns:Publish", "Resource": "arn:aws:sns:us-east-1:ACCOUNT_ID:file-notification-topic"},
+    {"Sid": "Logs", "Effect": "Allow", "Action": ["logs:CreateLogGroup","logs:CreateLogStream","logs:PutLogEvents"], "Resource": "arn:aws:logs:REGION:ACCOUNT_ID:log-group:TOPIC_ARN:*"}
+  ]
+}
